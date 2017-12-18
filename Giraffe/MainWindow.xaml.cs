@@ -27,7 +27,7 @@ namespace Giraffe {
 
         public void addressBarKeyUp(object sender, KeyEventArgs e) {
             if (e.Key != Key.Enter) { return; }
-            this.browser.Navigate(this.addressBar.Text);
+            this.browser.Address = this.addressBar.Text;
         }
     }
 }
