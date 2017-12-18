@@ -21,5 +21,13 @@ namespace Giraffe {
         public MainWindow() {
             InitializeComponent();
         }
+
+        //menu handlers
+        //navbar handlers
+
+        public void addressBarKeyUp(object sender, KeyEventArgs e) {
+            if (e.Key != Key.Enter) { return; }
+            this.browser.Navigate(this.addressBar.Text);
+        }
     }
 }
