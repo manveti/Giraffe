@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         ResizeMode="CanResizeWithGrip"
         Title="Giraffe" Width="1000" Height="700">
-    <Grid>
+    <Grid Name="mainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -62,7 +62,7 @@
             <Label Grid.Column="0" Content="Icon"/>
             <ComboBox Grid.Column="1" Name="addressBar" IsEditable="True" KeyUp="addressBarKeyUp"/>
         </Grid>
-        <Border Grid.Row="3" Grid.Column="0" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderThickness="1">
+        <Border Grid.Row="3" Grid.Column="0" Name="browserBorder" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderThickness="1">
             <cefSharp:ChromiumWebBrowser Grid.Row="3" Grid.Column="0" Name="browser"/>
         </Border>
         <StatusBar Grid.Row="4" Grid.Column="0">
@@ -78,7 +78,7 @@
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
             <StatusBarItem Grid.Column="0">
-                <TextBlock Text="Done"/>
+                <TextBlock Name="statusBox"/>
             </StatusBarItem>
             <Separator Grid.Column="1"/>
             <StatusBarItem Grid.Column="2">
