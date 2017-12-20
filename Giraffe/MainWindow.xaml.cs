@@ -28,8 +28,28 @@ namespace Giraffe {
         }
 
 
-        //menu handlers
-        //...
+        // menu handlers
+        // File
+        public void newWindow(object sender, RoutedEventArgs e) {
+            MainWindow w = new MainWindow();
+            w.Show();
+        }
+
+        public void newPrivateWindow(object sender, RoutedEventArgs e) {
+            MainWindow w = new MainWindow();
+            w.browser.RequestContext = new RequestContext();
+            w.Show();
+        }
+
+        //open file
+        //close window
+        //save page as
+        //page setup
+        //print preview
+        //print
+        //exit
+
+        //other menu handlers
 
             
         // navbar handlers
