@@ -42,10 +42,10 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="Back"/>
-            <Button Grid.Column="1" Content="Forward"/>
-            <Button Grid.Column="2" Content="Reload"/>
-            <Button Grid.Column="3" Content="Stop"/>
+            <Button Grid.Column="0" Name="backButton" Content="Back" Click="goBack" IsEnabled="False"/>
+            <Button Grid.Column="1" Name="forwardButton" Content="Forward" Click="goForward" IsEnabled="False"/>
+            <Button Grid.Column="2" Name="reloadButton" Content="Reload" Click="doReload" IsEnabled="False"/>
+            <Button Grid.Column="3" Name="stopButton" Content="Stop" Click="doStop" IsEnabled="False"/>
             <Separator Grid.Column="4" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
             <Button Grid.Column="5" Content="Home"/>
             <Button Grid.Column="6" Content="History"/>

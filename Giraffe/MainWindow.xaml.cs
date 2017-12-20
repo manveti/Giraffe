@@ -18,17 +18,44 @@ namespace Giraffe {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, IDisplayHandler {
+    public partial class MainWindow : Window, IDisplayHandler, ILoadHandler {
         WindowState previousWindowState = WindowState.Normal;
 
         public MainWindow() {
             InitializeComponent();
             this.browser.DisplayHandler = this;
+            this.browser.LoadHandler = this;
         }
 
 
         //menu handlers
-        //navbar handlers
+        //...
+
+            
+        // navbar handlers
+        public void goBack(object sender, RoutedEventArgs e) {
+            this.browser.Back();
+        }
+
+        //back menu
+
+        public void goForward(object sender, RoutedEventArgs e) {
+            this.browser.Forward();
+        }
+
+        //forward menu
+
+        public void doReload(object sender, RoutedEventArgs e) {
+            this.browser.Reload();
+        }
+
+        public void doStop(object sender, RoutedEventArgs e) {
+            this.browser.Stop();
+        }
+
+        //home
+        //history
+        //config
 
         public void addressBarKeyUp(object sender, KeyEventArgs e) {
             if (e.Key != Key.Enter) { return; }
@@ -68,6 +95,20 @@ namespace Giraffe {
         }
 
         public bool OnTooltipChanged(IWebBrowser sender, String text) { return false; }
+
+        // ILoadHandler
+        public void OnFrameLoadEnd(IWebBrowser sender, FrameLoadEndEventArgs e) { }
+        public void OnFrameLoadStart(IWebBrowser sender, FrameLoadStartEventArgs e) { }
+        public void OnLoadError(IWebBrowser sender, LoadErrorEventArgs e) { }
+
+        public void OnLoadingStateChange(IWebBrowser sender, LoadingStateChangedEventArgs e) {
+            this.Dispatcher.Invoke(new Action(() => {
+                this.backButton.IsEnabled = e.CanGoBack;
+                this.forwardButton.IsEnabled = e.CanGoForward;
+                this.reloadButton.IsEnabled = e.CanReload;
+                this.stopButton.IsEnabled = e.IsLoading;
+            }));
+        }
 
 
         // helper functions
